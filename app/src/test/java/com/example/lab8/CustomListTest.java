@@ -36,9 +36,9 @@ public class CustomListTest {
      * create a mocklist for my citylist
      * @return
      */
-    public CustomList MockCityList(){
+    @BeforeEach
+    public void MockCityList(){
         list = new CustomList(null,new ArrayList<>());
-        return list;
     }
 
     /**
@@ -50,11 +50,20 @@ public class CustomListTest {
     @Test
     @DisplayName("This function if for testing add")
     public void addCityTest(){
-        list = MockCityList();
         int listSize = list.getCount();
         list.addCity(new City("Estevan", "SK"));
         assertEquals(list.getCount(),listSize + 1);
     }
+
+        @Test
+    @DisplayName("This function if for testing hasCity")
+    void testHasCity() {
+        City city = new City("Regina", "Saskatchewan");
+        assertFalse(list.hasCity(city));
+        list.addCity(city);
+        assertTrue(list.hasCity(city));
+    }
+
 //    @Test
 //    void testAdd2() {
 //        City city = mockCity();
