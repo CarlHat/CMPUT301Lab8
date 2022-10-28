@@ -55,13 +55,24 @@ public class CustomListTest {
         assertEquals(list.getCount(),listSize + 1);
     }
 
-        @Test
+    @Test
     @DisplayName("This function if for testing hasCity")
     void testHasCity() {
         City city = new City("Regina", "Saskatchewan");
         assertFalse(list.hasCity(city));
         list.addCity(city);
         assertTrue(list.hasCity(city));
+    }
+
+    @Test
+    @DisplayName("This function if for testing delete")
+    void testDelete() {
+        int listSize = list.getCount();
+        City city = new City("Estevan", "SK");
+        list.addCity(city);
+        assertEquals(list.getCount(),listSize + 1);
+        list.deleteCity(city);
+        assertEquals(list.getCount(),listSize);
     }
 
 //    @Test
